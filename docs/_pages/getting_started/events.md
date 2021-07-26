@@ -40,14 +40,16 @@ whenever the `EventManager` queue is empty. Then the `TimeFlowController` trigge
 In order to subscribe a listener to a certain type of Event, the `subscribe` function should be used. For example, in
 order to subscribe a listener to a certain type of `TimeEvent`, the following function should be used:
 
-```
+```python
+
 Scheduler.subscribe(TypeOfEvent, listener)
 ```
 
 Listener will be only notified of events of this concrete type (e.g. `MarketOpenEvent` and not all `TimeEvents`).
 Listener needs to have a proper callback method, defined in `TimeEvent.notify()` method.
 
-```
+```python
+
 class CustomTimeEvent (TimeEvent):
     def notify(self, listener) -> None:
         listener.on_custom_event()
@@ -71,7 +73,8 @@ year, month, weekday, day, hour, minute, second, microsecond. In order to schedu
 all the fields: hour, minute, second, microsecond should be filled. The `RegularTimeEvent` needs to implement
 `trigger_time`, `next_trigger_time` and `notify` functions (see example below).
 
-```
+```python
+
 class CustomRegularTimeEvent(RegularTimeEvent):
     """
     Rule which is triggered every Monday at 8:15 a.m.
@@ -108,7 +111,8 @@ occur with a predefined frequency (e.g. daily frequency, 1 minute frequency etc.
 The `PeriodicEvent` is triggered only within the [start_time, end_time] time range with the given frequency.
 It is triggered always at the start_time, but not necessarily at the end_time. For example:
 
-```
+```python
+
 start_time = {
     "hour": 13, "minute": 20,
     "second": 0, "microsecond": 0
