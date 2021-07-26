@@ -29,7 +29,6 @@ In this section we will present an example of a strategy, which computes every d
 The crucial part of strategy implementation is subscribing to events and implementing the corresponding callback methods. In our case we will calculate the signals and place orders before opening the market (we subscribe to the `BeforeMarketOpenEvent`, the default time of it as defined in the `BacktestTradingSessionBuilder` is 8:00 a.m.). Then, all the placed orders can be executed already on the market opening.
 
 ```python
-
 class SimpleMAStrategy(object):
     def __init__(self, ts: BacktestTradingSession, ticker: Ticker):
         self.broker = ts.broker
@@ -100,7 +99,6 @@ def main():
 In this section we will present an example of a strategy, which simply purchases (longs) an asset as soon as it starts and then holds until the completion of a backtest.
 
 ```python
-
 class BuyAndHoldStrategy(object):
     CONTRACT = Contract(symbol="SPY US Equity", security_type='STK',
      exchange='NASDAQ')
@@ -157,7 +155,6 @@ In order to use the `AlphaModelStrategy` it is necessary to implement the `Alpha
 Below we present a simple strategy using the `AlphaModel`. It applies two Exponential Moving Averages of different time periods on the recent market close prices of an asset to determine the suggested move. It suggests to go LONG on this asset if the shorter close prices moving average exceeds the longer one. Otherwise it suggests to go SHORT.
 
 ```python
-
 class MovingAverageAlphaModel(AlphaModel):
     settings = AlphaModelSettings(
         parameters=(5, 20),

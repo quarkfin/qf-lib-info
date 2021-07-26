@@ -41,7 +41,6 @@ In order to subscribe a listener to a certain type of Event, the `subscribe` fun
 order to subscribe a listener to a certain type of `TimeEvent`, the following function should be used:
 
 ```python
-
 Scheduler.subscribe(TypeOfEvent, listener)
 ```
 
@@ -49,7 +48,6 @@ Listener will be only notified of events of this concrete type (e.g. `MarketOpen
 Listener needs to have a proper callback method, defined in `TimeEvent.notify()` method.
 
 ```python
-
 class CustomTimeEvent (TimeEvent):
     def notify(self, listener) -> None:
         listener.on_custom_event()
@@ -74,7 +72,6 @@ all the fields: hour, minute, second, microsecond should be filled. The `Regular
 `trigger_time`, `next_trigger_time` and `notify` functions (see example below).
 
 ```python
-
 class CustomRegularTimeEvent(RegularTimeEvent):
     """
     Rule which is triggered every Monday at 8:15 a.m.
@@ -83,7 +80,7 @@ class CustomRegularTimeEvent(RegularTimeEvent):
     """
 
     _trigger_time_dictionary = {
-        "weekday": 0, hour": 8, "minute": 15,
+        "weekday": 0, "hour": 8, "minute": 15,
         "second": 0, "microsecond": 0
     }
     _time_rule = RegularDateTimeRule(**trigger_time_dict)
@@ -112,7 +109,6 @@ The `PeriodicEvent` is triggered only within the [start_time, end_time] time ran
 It is triggered always at the start_time, but not necessarily at the end_time. For example:
 
 ```python
-
 start_time = {
     "hour": 13, "minute": 20,
     "second": 0, "microsecond": 0
