@@ -8,7 +8,9 @@ toc_icon: "cog"
 ---
 
 This document will guide you through the installation process and will help you configure the library for the newest release 
-(python 3.9). In order to install the library for python 3.6 please refer to the README associated with that QF-Lib version: 
+(python 3.9). 
+
+In order to install the library for python 3.6 please refer to the README associated with that QF-Lib version: [QF-Lib for Python 3.6](https://github.com/quarkfin/qf-lib/tree/v1.0.0-alpha).
 
 ## Prerequisites
 It is assumed that you have already installed Python 3.9.
