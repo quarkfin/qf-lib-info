@@ -23,13 +23,19 @@ In order to facilitate the GTK3+ installation process for Windows you can use in
 `https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases`. Download and run the latest 
 `gtk3-runtime-x.x.x-x-x-x-ts-win64.exe` file to install the GTK3+.
 
+## Installation
+
+You can install `qf-lib` using the pip command:
+
+`pip install qf-lib`
+
+Alternatively, to install the library from sources, you can download the project and in the qf_lib directory (same one where you found this file after cloning the repository) execute the following command:
+
+`python setup.py install`
+
 ## Installation (using requirements.txt)
 In the qf_lib directory (same one where you found this file after cloning the repository) execute the following command:
 `python -m pip install -r requirements.txt`. This will install all necessary python dependencies.
-
-## Installation (from sources)
-In the qf_lib directory (same one where you found this file after cloning the repository) execute the following command:
-```python setup.py install```
 
 ### [Optional] Tips on how to install optional data providers
 * Bloomberg API (version: 3.16.2) installation:
@@ -43,9 +49,6 @@ In the qf_lib directory (same one where you found this file after cloning the re
     * Link for windows msi file: `http://interactivebrokers.github.io/downloads/TWS%20API%20Install%20976.01.msi`.
     * Install TWS API by running the downloaded file.
     * Go to `TWS API\source\pythonclient` and run `python setup.py install`.
-
-## Development
-The project has been developed using PyCharm and this is a suggested IDE for further development.
 
 # Configuration
 ## Starting directory
