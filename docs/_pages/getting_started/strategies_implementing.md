@@ -26,51 +26,39 @@ In order to be used for the backtesting purposes, strategies do not have to impl
 
 In this section we will present an example of a strategy, which computes every day, before the market open time, two simple moving averages (long - 20 days, short - 5 days) and creates a buy order in case if the short moving average is greater or equal to the long moving average.
 
-The crucial part of strategy implementation is subscribing to events and implementing the corresponding callback methods. In our case we will calculate the signals and place orders before opening the market (we subscribe to the `BeforeMarketOpenEvent`, the default time of it as defined in the `BacktestTradingSessionBuilder` is 8:00 a.m.). Then, all the placed orders can be executed already on the market opening.
+The crucial part of strategy implementation is subscribing to events and implementing the corresponding callback methods. In our case we will calculate the signals and place orders before opening the market (we subscribe to the `BeforeMarketOpenEvent`, 
+the default time of it as defined in the `BacktestTradingSessionBuilder` is 8:00 a.m., using the `OnBeforeMarketOpenSignalGeneration` utility class). 
+Then, all the placed orders can be executed already on the market opening.
 
 ```python
-class SimpleMAStrategy(object):
+class SimpleMAStrategy(AbstractStrategy):
     def __init__(self, ts: BacktestTradingSession, ticker: Ticker):
+        super().__init__(ts)
         self.broker = ts.broker
         self.order_factory = ts.order_factory
         self.data_handler = ts.data_handler
-        self.contract_ticker_mapper = ts.contract_ticker_mapper
         self.position_sizer = ts.position_sizer
         self.timer = ts.timer
         self.ticker = ticker
 
-        # Subscribe to the BeforeMarketOpenEvent
-        ts.notifiers.scheduler.subscribe(BeforeMarketOpenEvent, listener=self)
-
-    def on_before_market_open(self, _: BeforeMarketOpenEvent):
-        self.calculate_signals()
-
-    def calculate_signals(self):
+    def calculate_and_place_orders(self):
         # Compute the moving averages
         long_ma_len = 20
         short_ma_len = 5
 
-        # Use data handler to download last 20 daily close prices and use them
-        # to compute the moving averages
+        # Use data handler to download last 20 daily close prices and use them to compute the moving averages
         long_ma_series = self.data_handler.historical_price(self.ticker,
-          PriceField.Close, long_ma_len)
+                                                            PriceField.Close, long_ma_len)
         long_ma_price = long_ma_series.mean()
 
         short_ma_series = long_ma_series.tail(short_ma_len)
         short_ma_price = short_ma_series.mean()
 
-        # Map the given ticker onto a Contract object, which can be further used
-        # to place an Order
-        contract = self.contract_ticker_mapper.ticker_to_contract(self.ticker)
-
         if short_ma_price >= long_ma_price:
-            # Place a buy Market Order, adjusting the position to a value equal
-            # to 100% of the portfolio
-            orders = self.order_factory.target_percent_orders({contract: 1.0},
-              MarketOrder(), TimeInForce.DAY)
+            # Place a buy Market Order, adjusting the position to a value equal to 100% of the portfolio
+            orders = self.order_factory.target_percent_orders({self.ticker: 1.0}, MarketOrder(), TimeInForce.DAY)
         else:
-            orders = self.order_factory.target_percent_orders({contract: 0.0},
-              MarketOrder(), TimeInForce.DAY)
+            orders = self.order_factory.target_percent_orders({self.ticker: 0.0}, MarketOrder(), TimeInForce.DAY)
 
         # Cancel any open orders and place the newly created ones
         self.broker.cancel_all_open_orders()
@@ -78,19 +66,21 @@ class SimpleMAStrategy(object):
 
 
 def main():
+    # settings
+    backtest_name = 'Simple MA Strategy Demo'
     start_date = str_to_date("2010-01-01")
-    end_date = str_to_date("2010-03-01")
-    ticker = BloombergTicker("MSFT US Equity")
+    end_date = str_to_date("2015-03-01")
+    ticker = DummyTicker("AAA")
 
-    # Build the BacktestTradingSession
-    session_builder = container.resolve(BacktestTradingSessionBuilder)
-    # Use daily price bars
+    # configuration
+    session_builder = container.resolve(BacktestTradingSessionBuilder)  # type: BacktestTradingSessionBuilder
     session_builder.set_frequency(Frequency.DAILY)
-    session_builder.set_backtest_name('Simple_MA')
-    ts = session_builder.build(start_date, end_date)
-    ts.use_data_preloading(ticker, RelativeDelta(days=40))
+    session_builder.set_backtest_name(backtest_name)
+    session_builder.set_data_provider(daily_data_provider)
 
-    SimpleMAStrategy(ts, ticker)
+    ts = session_builder.build(start_date, end_date)
+
+    OnBeforeMarketOpenSignalGeneration(SimpleMAStrategy(ts, ticker))
     ts.start_trading()
 ```
 
@@ -99,28 +89,23 @@ def main():
 In this section we will present an example of a strategy, which simply purchases (longs) an asset as soon as it starts and then holds until the completion of a backtest.
 
 ```python
-class BuyAndHoldStrategy(object):
-    CONTRACT = Contract(symbol="SPY US Equity", security_type='STK',
-     exchange='NASDAQ')
+class BuyAndHoldStrategy(AbstractStrategy):
+    """
+    A testing strategy that simply purchases (longs) an asset as soon as it starts and then holds until the completion
+    of a backtest.
+    """
+
     TICKER = BloombergTicker("SPY US Equity")
 
-    def __init__(self, broker: Broker, order_factory: OrderFactory,
-      scheduler: Scheduler):
-        self.order_factory = order_factory
-        self.broker = broker
-
+    def __init__(self, ts: TradingSession):
+        super().__init__(ts)
+        self.order_factory = ts.order_factory
+        self.broker = ts.broker
         self.invested = False
 
-        # Subscribe to the BeforeMarketOpenEvent
-        scheduler.subscribe(BeforeMarketOpenEvent, listener=self)
-
-    def on_before_market_open(self, _: BeforeMarketOpenEvent):
-        self.calculate_signals()
-
-    def calculate_signals(self):
+    def calculate_and_place_orders(self):
         if not self.invested:
-            orders = self.order_factory.percent_orders({self.CONTRACT: 1.0},
-              MarketOrder(), TimeInForce.GTC)
+            orders = self.order_factory.percent_orders({self.TICKER: 1.0}, MarketOrder(), TimeInForce.GTC)
 
             self.broker.place_orders(orders)
             self.invested = True
@@ -130,23 +115,18 @@ def main():
     start_date = str_to_date("2010-01-01")
     end_date = str_to_date("2018-01-01")
 
-    session_builder = container.resolve(BacktestTradingSessionBuilder)  
+    session_builder = container.resolve(BacktestTradingSessionBuilder)  # type: BacktestTradingSessionBuilder
     session_builder.set_backtest_name('Buy and Hold')
     session_builder.set_frequency(Frequency.DAILY)
     ts = session_builder.build(start_date, end_date)
     ts.use_data_preloading(BuyAndHoldStrategy.TICKER)
 
-    BuyAndHoldStrategy(
-        ts.broker,
-        ts.order_factory,
-        ts.notifiers.scheduler
-    )
-
+    OnBeforeMarketOpenSignalGeneration(BuyAndHoldStrategy(ts))
     ts.start_trading()
 ```
 
 # AlphaModel strategy implementation
-A different approach to strategies implementation involves the use of AlphaModels. The **backtesting** module contains both an abstract `AlphaModel` and an `AlphaModelStrategy` - a base strategy, which puts together models and all settings around it and generates orders on the Before Market Open event.
+A different approach to strategies implementation involves the use of AlphaModels. The **backtesting** module contains both an abstract `AlphaModel` and an `AlphaModelStrategy` - a base strategy, which puts together models and all settings around it.
 
 `AlphaModel` is responsible for calculating Signals every day, before the market opening. Each Signal contains information such as suggested exposure, fraction at risk (helpful to determine the stop loss levels), signal confidence or expected price move. These signals are further used by the `PositionSizer` in order to generate and place `Orders`.
 
@@ -155,15 +135,16 @@ In order to use the `AlphaModelStrategy` it is necessary to implement the `Alpha
 Below we present a simple strategy using the `AlphaModel`. It applies two Exponential Moving Averages of different time periods on the recent market close prices of an asset to determine the suggested move. It suggests to go LONG on this asset if the shorter close prices moving average exceeds the longer one. Otherwise it suggests to go SHORT.
 
 ```python
-class MovingAverageAlphaModel(AlphaModel):
-    settings = AlphaModelSettings(
-        parameters=(5, 20),
-        risk_estimation_factor=1.25
-    )
 
+class MovingAverageAlphaModel(AlphaModel):
+    """
+    This is an example of a simple AlphaModel. It applies two Exponential Moving Averages of different time periods
+    on the recent market close prices of an asset to determine the suggested move. It suggests to go LONG on this asset
+    if the shorter close prices moving average exceeds the longer one. Otherwise it suggests to go SHORT.
+    """
     def __init__(self, fast_time_period: int, slow_time_period: int,
-                 risk_estimation_factor: float, data_handler: DataHandler):
-        super().__init__(risk_estimation_factor, data_handler)
+                 risk_estimation_factor: float, data_provider: DataProvider):
+        super().__init__(risk_estimation_factor, data_provider)
 
         self.fast_time_period = fast_time_period
         self.slow_time_period = slow_time_period
@@ -171,20 +152,20 @@ class MovingAverageAlphaModel(AlphaModel):
         if fast_time_period < 3:
             raise ValueError('timeperiods shorter than 3 are pointless')
         if slow_time_period <= fast_time_period:
-            raise ValueError('slow MA time period should be longer than fast
-            MA time period')
+            raise ValueError('slow MA time period should be longer than fast MA time period')
 
-    def calculate_exposure(self, ticker: Ticker, current_exposure: Exposure)
-      -> Exposure:
+    def calculate_exposure(self, ticker: Ticker, current_exposure: Exposure) -> Exposure:
         num_of_bars_needed = self.slow_time_period
-        close_tms = self.data_handler.historical_price(ticker, PriceField.Close,
-          num_of_bars_needed)
+        close_tms = self.data_provider.historical_price(ticker, PriceField.Close, num_of_bars_needed)
 
-        fast_ma = talib.MA(close_tms, self.fast_time_period, matype=1)  
-        slow_ma = talib.MA(close_tms, self.slow_time_period, matype=1) 
+        fast_ma = close_tms.ewm(span=self.fast_time_period, adjust=False).mean()  # fast exponential moving average
+        slow_ma = close_tms.ewm(span=self.slow_time_period, adjust=False).mean()  # slow exponential moving average
 
         if fast_ma[-1] > slow_ma[-1]:
             return Exposure.LONG
         else:
             return Exposure.SHORT
+
+    def __hash__(self):
+        return hash((self.__class__.__name__, self.fast_time_period, self.slow_time_period, self.risk_estimation_factor))
 ```
