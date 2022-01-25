@@ -87,7 +87,7 @@ title: "Contact us"
 
 
       var xmlHttp = new XMLHttpRequest();
-      xmlHttp.open("post", "https://send.pageclip.co/rPF0WHR1MUVXoxGHPsiI2pl91fyusWax");
+      xmlHttp.open("post", "https://send.pageclip.co/rPF0WHR1MUVXoxGHPsiI2pl91fyusWax/Contact");
       xmlHttp.send(formData);
     }
 
