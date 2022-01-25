@@ -87,7 +87,7 @@ title: "Contact us"
 
 
       var xmlHttp = new XMLHttpRequest();
-      xmlHttp.open("post", "https://getsimpleform.com/messages?form_api_token=c3b9960a747219449196dcca00487a9c");
+      xmlHttp.open("post", "https://send.pageclip.co/rPF0WHR1MUVXoxGHPsiI2pl91fyusWax");
       xmlHttp.send(formData);
     }
 
