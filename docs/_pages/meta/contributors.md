@@ -38,6 +38,7 @@ title: "Contributors"
 {: .notice}
 
 **Bartłomiej Czajewski** Bartlomiej Czajewski joined Quantitative Methods Group as a Python Developer. Enthusiast of open source solutions. Academic background includes quantitative methods, and social sciences. Likes to create ideas, strategies, or software and continuously improve it. Constantly develops skills and interests related to artificial intelligence. Feels free in agile-style R&D. In free time improvises on piano and delights the beauty of nature.
+{: .notice}
 
 ## Advisors
 
