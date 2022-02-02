@@ -174,16 +174,3 @@ A relative path to the directory into which different components will put their 
   }
 ```
 SMTP settings used by the `EmailPublisher`.
-
-
-
-
-# Testing
-After the installation process you may test if everything was setup fine. In order to do so you need to download
-the `QuantFin Lib` from git and then:
-1. Add path of `QuantFin Lib` to the `PYTHONPATH` environment variable (create it if it doesn't exist).
-2. Go to the `qf_lib_tests` directory.
-3. Run `python run_unit_tests.py` script. There should be no skipped tests and no errors if all the requirements
-were installed correctly.
-4. Run `python run_integration_tests.py` script. It's better if you have established Bloomberg, Haver and Quandl connections.
-Otherwise some tests might be skipped. However there should be no errors.
