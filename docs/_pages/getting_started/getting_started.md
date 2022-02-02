@@ -7,43 +7,37 @@ toc_label: "On this page"
 toc_icon: "cog"
 ---
 
-This document will guide you through the installation process and will help you configure the library for the newest release 
-(python 3.9). 
+This document will guide you through the installation process and will help you configure the library for the newest release.
 
 In order to install the library for python 3.6 please refer to the README associated with that QF-Lib version: [QF-Lib for Python 3.6](https://github.com/quarkfin/qf-lib/tree/v1.0.0-alpha).
 
 ## Prerequisites
-It is assumed that you have already installed Python 3.9.
+The library uses [WeasyPrint](https://weasyprint.readthedocs.io) to export documents to PDF. WeasyPrint requires additional dependencies, check the 
+[platform-specific instructions for Linux, macOS and Windows installation](https://weasyprint.readthedocs.io/en/stable/install.html).
 
-The library uses WeasyPrint to export documents to PDF. WeasyPrint requires additional dependencies, check the 
-following link for platform-specific instructions for Linux, macOS and Windows installation:
-`https://weasyprint.readthedocs.io/en/stable/install.html`.
-
-In order to facilitate the GTK3+ installation process for Windows you can use installers available at:
-`https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases`. Download and run the latest 
+In order to facilitate the GTK3+ installation process for Windows you can use 
+[following installers](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases). Download and run the latest 
 `gtk3-runtime-x.x.x-x-x-x-ts-win64.exe` file to install the GTK3+.
 
 ## Installation
 
 You can install `qf-lib` using the pip command:
 
-`pip install qf-lib`
+```sh
+pip install qf-lib
+```
 
 Alternatively, to install the library from sources, you can download the project and in the qf_lib directory (same one where you found this file after cloning the repository) execute the following command:
 
 `python setup.py install`
 
-## Installation (using requirements.txt)
-In the qf_lib directory (same one where you found this file after cloning the repository) execute the following command:
-`python -m pip install -r requirements.txt`. This will install all necessary python dependencies.
-
-### [Optional] Tips on how to install optional data providers
+## Tips on how to install optional data providers
 * Bloomberg API (version: 3.16.2) installation:
-    * `python -m pip install --index-url=https://bcms.bloomberg.com/pip/simple/ blpapi==3.16.2`
+    * `pip install --index-url=https://bcms.bloomberg.com/pip/simple/ blpapi==3.16.2`
     * Prebuilt binaries are provided for Python 2.7, 3.6, 3.7, 3.8 and 3.9 in both 32 and 64 bits, for Windows, macOS, 
     and most versions of Linux. On Linux, 'pip' >= 19.0 is required to install these binaries.
  * Quandl Data Provider (version: 3.6.1):
-    * `python -m pip install quandl==3.6.1`
+    * `pip install quandl==3.6.1`
  * Interactive Brokers platform installation:
     * Download the TWS API Stable for your operating system (Version: API 9.76).
     * Link for windows msi file: `http://interactivebrokers.github.io/downloads/TWS%20API%20Install%20976.01.msi`.
