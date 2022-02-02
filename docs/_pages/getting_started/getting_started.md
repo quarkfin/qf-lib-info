@@ -27,9 +27,12 @@ You can install `qf-lib` using the pip command:
 pip install qf-lib
 ```
 
-Alternatively, to install the library from sources, you can download the project and in the qf_lib directory (same one where you found this file after cloning the repository) execute the following command:
+Alternatively, to install the library from sources, you can download the project and in the qf_lib directory 
+(same one where you found this file after cloning the repository) execute the following command:
 
-`python setup.py install`
+```sh
+python setup.py install
+```
 
 ## Tips on how to install optional data providers
 * Bloomberg API (version: 3.16.2) installation:
