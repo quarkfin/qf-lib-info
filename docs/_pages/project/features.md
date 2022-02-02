@@ -6,7 +6,8 @@ title: "Features"
 The most important features of the Library are as follows:
 
 ## Flexible data sourcing
-The project supports the possibility of an easy selection of the data source. It currently provides financial data from Bloomberg, Quandl, Haver Analytics, CoinMarketCap or from an traditional database (Oracle, PostgreSQL) however, the DataProvider interface can be extended to support any other source of data. In the case of complex computations, the operation time can be reduced by using data preloading. The data structures can be also cached to avoid sending excess requests if the tests are expected to be carried out multiple times. In addition, if the data is partially incomplete (i.e. has gaps); it can be easily cleaned – for example using regression.
+The project supports the possibility of an easy selection of the data source. 
+It currently provides financial data from Bloomberg, Quandl, Haver Analytics, CoinMarketCap and Portara however, the DataProvider interface can be extended to support any other source of data. In the case of complex computations, the operation time can be reduced by using data preloading. The data structures can be also cached to avoid sending excess requests if the tests are expected to be carried out multiple times. In addition, if the data is partially incomplete (i.e. has gaps); it can be easily cleaned – for example using regression.
 
 ## Tools to prevent look-ahead bias in the backtesting environment
 All DataProvider types (including custom) can be wrapped with a DataHandler, which may be used in both live and backtest environments. Its task is to make sure that data "from the future" will not be passed into the testing components. It is particularly essential in the Backtester.
