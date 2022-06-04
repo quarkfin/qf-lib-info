@@ -73,11 +73,11 @@ QF-Lib offers a well tested DataProvider implementation for Bloomberg. Specifica
 #### Bloomberg Enterprise Access Point (BEAP) HAPI
 `BloombergBeapHapiDataProvider` 
 
-#### Bloomberg Execution Management System (EMSX)
+#### Bloomberg Execution Management System (EMSX) z
 Will become available soon 
 
-
 ## Binance
+
 #### Broker
 `BinaceBroker`
 class implements synchronous interactions with Binance API. 
