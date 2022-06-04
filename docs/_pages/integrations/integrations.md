@@ -1,7 +1,8 @@
 ---
-permalink: /integrations/ 
+permalink: /integrations/
 title: "Integrations"
-toc: true toc_sticky: true 
+toc: true
+toc_sticky: true
 toc_label: "On this page"
 toc_icon: "cog"
 ---
