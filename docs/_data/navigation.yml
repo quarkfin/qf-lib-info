@@ -1,17 +1,16 @@
 main:
   - title: "About"
     url: /about/
-  - title: "Contributors"
-    url: /contributors/
-  - title: "Contact us"
-    url: /contact/
   - title: "API documentation"
     url: "https://qf-lib.readthedocs.io/en/latest/"
   - title: "Integrations"
     url: /integrations/
   - title: "GitHub"
     url: "https://github.com/quarkfin/qf-lib"
-
+  - title: "Contributors"
+    url: /contributors/
+  - title: "Contact us"
+    url: /contact/
 docs:
   - title: "Project"
     children:
