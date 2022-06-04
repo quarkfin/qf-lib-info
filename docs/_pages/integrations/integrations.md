@@ -64,7 +64,6 @@ To see examples using Portara data provider, check the demo scripts:
 The files used in demo can be run with the data that is available here: [CQG Sample Data | Download CQG Data Factory Samples at PortaraCQG](
 https://mmm.cern.ch/owa/redir.aspx?C=nJ1q2tM5gwqbs97qIoeYHNV2k6q_A5_pVyuxRUYX1Pl0CSUqHEbaCA..&URL=https%3a%2f%2fportaracqg.com%2fsample-data%2f)
 
-
 ## Bloomberg
 QF-Lib offers a well tested DataProvider implementation for Bloomberg. Specifically please refer to the modules below:
 #### Bloomberg Standard API
@@ -74,32 +73,8 @@ Please consult `BloombergDataProvider` `FuturesDataProvider`
 Please consult `BloombergBeapHapiDataProvider` 
 
 #### Bloomberg Execution Management System (EMSX)
-Will become available soon 
+Will become available soon
 
-## Binance
-Tools for interacting with Binance
-#### Broker
-`BinaceBroker`
-class implements synchronous interactions with Binance API. 
-Binance Broker provides all basic functions of the Broker interface
-#### Data provider
-`BinaceDataProvider`
-Binance Data Provider downloads data directly from Binance. Particularly, the data provider can be used in backtests and live trading.
-Downloaded data is saved in .csv format.
+## Test1
 
-## Haver
-`HaverDataProvider` is an implementation of a DataProvider interface for  Haver Analytics - the premier provider of time series data for the global strategy and research community.
-
-## Interactive Brokers
-Tools for interacting with Interactive Brokers
-#### Broker
-`IBBroker`
-class implements synchronous interactions with IB API. 
- Main purpose of this class is to connect to the API of IB broker and send orders. It provides the functionality, 
-which allows to retrieve a.o. the currently open positions and the value of the portfolio.
-
-## CSV
-`CSVDataProvider`
-Generic Data Provider that uses local csv files. Is very flexible and can accommodate most files. 
-
-
+## Test2
