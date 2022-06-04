@@ -12,7 +12,7 @@ excerpt: >
 feature_row:
   - image_path: /assets/images/multi-tool.png
     alt: "Multi-tool for any type of financial research"
-    title: "Multi-tool for any financial research"
+    title: "Multi-tool for any type of financial research"
     excerpt: "QF-Lib provides various tools for portfolio construction, time series analysis, risk monitoring, and tools to process data and to present the results."
     url: "/about/#multi-tool-for-any-financial-research"
     btn_class: "btn--primary"
