@@ -7,13 +7,13 @@ toc_label: "On this page"
 toc_icon: "cog"
 ---
 
-# Overview
+## Overview
 
 This document describes the basic integrations offered by QF-Lib. This list will be extended in the future as we 
 constantly work on further developments.
 
 
-# Portara
+## Portara
 
 ![](../../assets/images/Portara-CQG_logo.png)
 
@@ -65,8 +65,7 @@ The files used in demo can be run with the data that is available here: [CQG Sam
 https://mmm.cern.ch/owa/redir.aspx?C=nJ1q2tM5gwqbs97qIoeYHNV2k6q_A5_pVyuxRUYX1Pl0CSUqHEbaCA..&URL=https%3a%2f%2fportaracqg.com%2fsample-data%2f)
 
 
-
-# Bloomberg
+## Bloomberg
 QF-Lib offers a well tested DataProvider implementation for Bloomberg. Specifically please refer to the modules below:
 #### Bloomberg Standard API
 `BloombergDataProvider` `FuturesDataProvider`
@@ -77,7 +76,8 @@ QF-Lib offers a well tested DataProvider implementation for Bloomberg. Specifica
 #### Bloomberg Execution Management System (EMSX)
 Will become available soon 
 
-# Binance
+
+## Binance
 #### Broker
 `BinaceBroker`
 class implements synchronous interactions with Binance API. 
@@ -87,18 +87,17 @@ Binance Broker provides all basic functions of the Broker interface
 Binance Data Provider downloads data directly from Binance. Particularly, the data provider can be used in backtests and live trading.
 Downloaded data is saved in .csv format.
 
-# Haver
+## Haver
 `HaverDataProvider` is an implementation of a DataProvider interface for  Haver Analytics - the premier provider of time series data for the global strategy and research community.
 
-# Interactive Brokers
+## Interactive Brokers
 #### Broker
 `IBBroker`
 class implements synchronous interactions with IB API. 
  Main purpose of this class is to connect to the API of IB broker and send orders. It provides the functionality, 
 which allows to retrieve a.o. the currently open positions and the value of the portfolio.
 
-
-# CSV
+## CSV
 `CSVDataProvider`
 Generic Data Provider that uses local csv files. Is very flexible and can accommodate most files. 
 
