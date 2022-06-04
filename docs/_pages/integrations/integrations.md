@@ -66,24 +66,27 @@ The files used in demo can be run with the data that is available here:
 
 ## Bloomberg
 QF-Lib offers a well tested DataProvider implementation for Bloomberg. Specifically please refer to the modules below:
-#### Bloomberg Standard API
+
+**Bloomberg Standard API**
 Please consult `BloombergDataProvider` `FuturesDataProvider`
 
-#### Bloomberg Enterprise Access Point (BEAP) HAPI
-
+**Bloomberg Enterprise Access Point (BEAP) HAPI**
 Please consult `BloombergBeapHapiDataProvider` 
-#### Bloomberg Execution Management System (EMSX)
+
+**Bloomberg Execution Management System (EMSX)**
 Will become available soon
 
 ## Binance
 Tools for interacting with Binance
-#### Broker
-`BinaceBroker`
-class implements synchronous interactions with Binance API. 
+
+**Broker**
+
+`BinaceBroker`class implements synchronous interactions with Binance API. 
 Binance Broker provides all basic functions of the Broker interface
-#### Data provider
-`BinaceDataProvider`
-Binance Data Provider downloads data directly from Binance. Particularly, the data provider can be used in backtests and live trading.
+
+**Data provider**
+
+`BinaceDataProvider` Binance Data Provider downloads data directly from Binance. Particularly, the data provider can be used in backtests and live trading.
 Downloaded data is saved in .csv format.
 
 ## Haver
@@ -91,7 +94,8 @@ Downloaded data is saved in .csv format.
 
 ## Interactive Brokers
 Tools for interacting with Interactive Brokers
-#### Broker
+
+**Broker**
 `IBBroker`
 class implements synchronous interactions with IB API. 
  Main purpose of this class is to connect to the API of IB broker and send orders. It provides the functionality, 
