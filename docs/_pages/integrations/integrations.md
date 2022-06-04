@@ -72,9 +72,6 @@ Please consult `BloombergDataProvider` `FuturesDataProvider`
 #### Bloomberg Enterprise Access Point (BEAP) HAPI
 Please consult `BloombergBeapHapiDataProvider` 
 
-#### Bloomberg Execution Management System (EMSX)
-Will become available soon
-
 ## Test1
 
 ## Test2
