@@ -68,16 +68,16 @@ https://mmm.cern.ch/owa/redir.aspx?C=nJ1q2tM5gwqbs97qIoeYHNV2k6q_A5_pVyuxRUYX1Pl
 ## Bloomberg
 QF-Lib offers a well tested DataProvider implementation for Bloomberg. Specifically please refer to the modules below:
 #### Bloomberg Standard API
-`BloombergDataProvider` `FuturesDataProvider`
+Please consult `BloombergDataProvider` `FuturesDataProvider`
 
 #### Bloomberg Enterprise Access Point (BEAP) HAPI
-`BloombergBeapHapiDataProvider` 
+Please consult `BloombergBeapHapiDataProvider` 
 
-#### Bloomberg Execution Management System (EMSX) z
+#### Bloomberg Execution Management System (EMSX)
 Will become available soon 
 
 ## Binance
-
+Tools for interacting with Binance
 #### Broker
 `BinaceBroker`
 class implements synchronous interactions with Binance API. 
@@ -91,6 +91,7 @@ Downloaded data is saved in .csv format.
 `HaverDataProvider` is an implementation of a DataProvider interface for  Haver Analytics - the premier provider of time series data for the global strategy and research community.
 
 ## Interactive Brokers
+Tools for interacting with Interactive Brokers
 #### Broker
 `IBBroker`
 class implements synchronous interactions with IB API. 
