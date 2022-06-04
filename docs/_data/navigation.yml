@@ -1,28 +1,17 @@
 main:
-  - title: "Getting Started"
-    url: /installation/
   - title: "About"
     url: /about/
+  - title: "API documentation"
+    url: "https://qf-lib.readthedocs.io/en/latest/"
+  - title: "Integrations"
+    url: /integrations/
+  - title: "GitHub"
+    url: "https://github.com/quarkfin/qf-lib"
   - title: "Contributors"
     url: /contributors/
   - title: "Contact us"
     url: /contact/
-  - title: "API documentation"
-    url: "https://qf-lib.readthedocs.io/en/latest/"
-  - title: "GitHub"
-    url: "https://github.com/quarkfin/qf-lib"
-
 docs:
-  - title: "Getting Started"
-    children:
-      - title: "Installation"
-        url: /installation/
-      - title: "Modules"
-        url: /structure/
-      - title: "Backtest flow"
-        url: /backtest_flow/
-      - title: "Strategies implementing"
-        url: /strategies_implementing/
   - title: "Project"
     children:
       - title: "About"
