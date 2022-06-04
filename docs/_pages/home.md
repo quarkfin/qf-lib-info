@@ -11,7 +11,7 @@ excerpt: >
   QF-Lib is a modular Python library that provides an advanced event driven backtester and a set of high quality tools for quantitative finance. <a href="/qf-lib-info/about/">Read more...</a><br />
 feature_row:
   - image_path: /assets/images/multi-tool.png
-    alt: "Multi-tool for any financial research"
+    alt: "Multi-tool for any type of financial research"
     title: "Multi-tool for any financial research"
     excerpt: "QF-Lib provides various tools for portfolio construction, time series analysis, risk monitoring, and tools to process data and to present the results."
     url: "/about/#multi-tool-for-any-financial-research"
