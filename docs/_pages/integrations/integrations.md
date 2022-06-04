@@ -11,8 +11,6 @@ constantly work on further developments.
 
 # Portara
 
-![](../../assets/images/Portara-CQG_logo.png)
-
 [Portara](https://portaracqg.com/) is a staple CQG product providing CQG Datafactory data to hedge funds, CTA’s quants
 and traders globally. Portara allows the extraction
 of [continuous intraday data](https://portaracqg.com/continuous-futures-data/) and individual data down to the 1 minute
