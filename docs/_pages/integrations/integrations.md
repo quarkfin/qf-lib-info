@@ -68,16 +68,19 @@ The files used in demo can be run with the data that is available here:
 QF-Lib offers a well tested DataProvider implementation for Bloomberg. Specifically please refer to the modules below:
 
 **Bloomberg Standard API**
-Please consult `BloombergDataProvider` `FuturesDataProvider`
+
+Please consult `BloombergDataProvider`.
 
 **Bloomberg Enterprise Access Point (BEAP) HAPI**
-Please consult `BloombergBeapHapiDataProvider` 
+
+Please consult `BloombergBeapHapiDataProvider`.
 
 **Bloomberg Execution Management System (EMSX)**
-Will become available soon
+
+Will become available soon.
 
 ## Binance
-Tools for interacting with Binance
+Tools for interacting with Binance.
 
 **Broker**
 
@@ -96,11 +99,11 @@ Downloaded data is saved in .csv format.
 Tools for interacting with Interactive Brokers
 
 **Broker**
-`IBBroker`
-class implements synchronous interactions with IB API. 
- Main purpose of this class is to connect to the API of IB broker and send orders. It provides the functionality, 
+
+`IBBroker` class implements synchronous interactions with IB API. 
+Main purpose of this class is to connect to the API of IB broker and send orders. It provides the functionality, 
 which allows to retrieve a.o. the currently open positions and the value of the portfolio.
 
 ## CSV
-`CSVDataProvider`
-Generic Data Provider that uses local csv files. Is very flexible and can accommodate most files.
+
+`CSVDataProvider` - Generic Data Provider that uses local csv files. It's very flexible and can accommodate most of the files.
