@@ -13,7 +13,7 @@ title: "Contributors"
 
 ## Developers
 
-**Marcin Borratynski** *CERN Pension Fund* Marcin Borratynski is a QF-Lib Project Lead, he joined the CERN Pension Fund in 2012 and is responsible for developing a quantitative asset allocation system as well as IT infrastructure of the Fund. He designed and implemented algorithmic investment strategy for the equity markets outperforming the benchmark by a large margin.  Prior to that Borratynski worked as an analyst for TOTEM Experiment at CERN where he was  processing data coming from the LHC – the largest and most complex experimental facility ever built. Borratynski has earned a computer science degree from AGH University of Science and Technology and an MBA from University of Geneva. He also holds the Certificate in Quantitative Finance (CQF).
+**Marcin Borratynski** Marcin Borratynski joined the CERN Pension Fund in 2012 and was responsible for developing a quantitative asset allocation system as well as IT infrastructure of the Fund. He designed and implemented algorithmic investment strategy for the equity markets outperforming the benchmark by a large margin. Prior to that Borratynski worked as an analyst for TOTEM Experiment at CERN where he was processing data coming from the LHC – the largest and most complex experimental facility ever built. Borratynski has earned a computer science degree from AGH University of Science and Technology and an MBA from University of Geneva. He also holds the Certificate in Quantitative Finance (CQF).
 {: .notice}
 
 **Jacek Witkowski** *Goldman Sachs* Jacek Witkowski is a distinguished graduate of Computer Science on Warsaw University of Technology on the Faculty of Electronics and Information Technology. He started programming at the age of 12 and since then is passionate about Computer Science. His main area of interests is software design and architecture of IT systems. Witkowski spent 3.5 years working for CERN Pension Fund as a software architect and a programmer. Currently works for Goldman Sachs’ Securities Division.
@@ -38,6 +38,21 @@ title: "Contributors"
 {: .notice}
 
 **Bartłomiej Czajewski** Bartlomiej Czajewski joined Quantitative Methods Group as a Python Developer. Enthusiast of open source solutions. Academic background includes quantitative methods, and social sciences. Likes to create ideas, strategies, or software and continuously improve it. Constantly develops skills and interests related to artificial intelligence. Feels free in agile-style R&D. In free time improvises on piano and delights the beauty of nature.
+{: .notice}
+
+**Jakub Czerski** 
+{: .notice}
+
+**Octavian-Mihai Matei** 
+{: .notice}
+
+**Zeynep Gültuğ Aydemir** 
+{: .notice}
+
+**Eirik Thorp Eythorsson** 
+{: .notice}
+
+**Marek Bais** 
 {: .notice}
 
 ## Advisors
